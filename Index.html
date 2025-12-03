@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sistema Gerador de Etiquetas - UZD</title>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="card">
+    <h1>Sistema Gerador de Etiquetas - UZD</h1>
+    <p class="hint">Escolha o tipo de acesso:</p>
+    <div class="row">
+      <button id="btnUser" class="col">Entrar como Usuário</button>
+      <button id="btnAdmin" class="col small btn-ghost">Entrar como Administrador</button>
+    </div>
+  </div>
+
+  <div id="mainUI" style="display:none;max-width:1100px;margin:auto">
+    <!-- ADMIN PANEL -->
+    <div id="adminPanel" class="card" style="display:none">
+      <div class="flex-between">
+        <h2>Painel do Administrador</h2>
+        <div class="actions">
+          <button id="btnLogoutAdmin" class="btn-ghost">Sair</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:12px">
+        <div style="flex:1">
+          <label>Título TAG</label>
+          <input id="adm_tag" type="text" placeholder="Ex: TAG123" />
+
+          <label>Número de Série</label>
+          <input id="adm_serial" type="text" placeholder="Ex: SN12345" />
+
+          <label>Modelo</label>
+          <input id="adm_modelo" type="text" placeholder="Ex: Prisma 2017" />
+
+          <label>Marca</label>
+          <input id="adm_marca" type="text" placeholder="Ex: Chevrolet" />
+
+          <div style="margin-top:8px"><button id="btnSalvarEtiqueta">Salvar Etiqueta</button></div>
+        </div>
+
+        <div style="width:320px">
+          <label>Logo Global (usada em todas etiquetas)</label>
+          <input id="adm_logo" type="file" accept="image/*" />
+          <div id="logoPreview" style="margin-top:8px"></div>
+
+          <label style="margin-top:12px">Permissões do Usuário</label>
+          <div style="margin-top:6px">
+            <label><input type="checkbox" id="perm_alterar_data"> Permitir alterar data atual</label>
+          </div>
+          <div>
+            <label><input type="checkbox" id="perm_alterar_hora"> Permitir alterar hora atual</label>
+          </div>
+          <div>
+            <label><input type="checkbox" id="perm_data_manual"> Permitir data próxima manual</label>
+          </div>
+
+          <label style="margin-top:8px">Senha do Administrador</label>
+          <input id="adm_password" type="password" />
+          <div style="margin-top:8px" class="hint">Senha atual padrão: <strong>1234</strong></div>
+          <div style="margin-top:8px"><button id="btnChangePass" class="btn-ghost">Alterar Senha</button></div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <div class="flex-between">
+          <h3>Etiquetas Cadastradas</h3>
+          <div class="actions">
+            <button id="btnExport" class="btn-ghost">Exportar (.csv)</button>
+          </div>
+        </div>
+        <div id="tableWrap"></div>
+      </div>
+    </div>
+
+    <!-- USER PANEL -->
+    <div id="userPanel" class="card" style="display:none">
+      <div class="flex-between">
+        <h2>Painel do Usuário</h2>
+        <div class="actions">
+          <button id="btnLogoutUser" class="btn-ghost">Sair</button>
+        </div>
+      </div>
+
+      <label>Digite o Número de Série</label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="user_search" type="text" placeholder="SN..." />
+        <button id="btnBuscar">Buscar</button>
+      </div>
+
+      <div id="userFound" style="display:none;margin-top:12px">
+        <p><strong>Título TAG:</strong> <span id="u_tag"></span></p>
+        <p><strong>Marca:</strong> <span id="u_marca"></span></p>
+        <p><strong>Modelo:</strong> <span id="u_modelo"></span></p>
+        <p><strong>Nº de Série:</strong> <span id="u_serial"></span></p>
+
+        <label>Data atual</label>
+        <input id="u_data" type="date" />
+
+        <label>Hora atual</label>
+        <input id="u_hora" type="time" />
+
+        <label>Próxima data</label>
+        <select id="u_proxima_select">
+          <option value="90d">90 Dias</option>
+          <option value="6m">6 Meses</option>
+          <option value="1y">1 Ano</option>
+          <option value="manual">Data manual</option>
+        </select>
+        <input id="u_proxima_manual" type="date" style="display:none;margin-top:8px" />
+
+        <div style="margin-top:12px">
+          <button id="btnGerar">Gerar Etiqueta</button>
+        </div>
+
+        <div id="labelPreview"></div>
+
+        <div id="printControls" style="display:none;margin-top:8px">
+          <button id="btnPrint">Imprimir</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JS externo -->
+  <script src="script.js"></script>
+</body>
+</html>

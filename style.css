@@ -1,0 +1,45 @@
+:root{font-family: Arial, Helvetica, sans-serif;color:#111}
+body{margin:0;padding:20px;background:#f4f4f6}
+.card{background:#fff;border-radius:8px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06);margin-bottom:16px;max-width:1100px;margin-left:auto;margin-right:auto}
+h1,h2{margin:0 0 12px}
+label{display:block;margin:8px 0 4px;font-weight:600}
+input[type=text], input[type=password], select, input[type=date], input[type=time]{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;box-sizing:border-box}
+button{padding:8px 12px;border-radius:6px;border:0;background:#111;color:#fff;cursor:pointer}
+.btn-ghost{background:#fff;border:1px solid #ccc;color:#111}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}
+.row{display:flex;gap:12px}
+.col{flex:1}
+.small{width:140px}
+#labelPreview{border:1px dashed #ccc;padding:8px;margin-top:12px;background:#fff}
+
+/* ETIQUETA 60mm x 40mm */
+.label{width:60mm;height:40mm;box-sizing:border-box;border:1px solid #000;padding:3mm;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;overflow:hidden}
+
+/* smaller logo per request */
+.label .logo{width:100%;height:9mm;border-bottom:1px solid #000;display:flex;align-items:center;justify-content:center;padding-bottom:2px;margin-bottom:3px}
+.label .logo img{max-height:8mm;max-width:100%;object-fit:contain}
+
+.label .body{font-size:10px;line-height:1.1;width:100%;display:flex;flex-direction:column;gap:2px;overflow:hidden}
+.field-row{display:flex;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.field-row .title{font-weight:700;min-width:28%}
+.field-row .value{overflow:hidden;text-overflow:ellipsis}
+
+.dates{margin-top:6px;font-weight:800;font-size:12px}
+
+.logo-thumb{width:48px;height:48px;object-fit:contain;border:1px solid #eee;padding:4px;border-radius:4px}
+.hint{font-size:12px;color:#666}
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+.actions{display:flex;gap:8px}
+
+@media print{
+  body *{visibility:hidden}
+  #printArea, #printArea *{visibility:visible}
+  #printArea{position:fixed;left:0;top:0;margin:0;padding:0}
+  @page{size:60mm 40mm;margin:0}
+}
+
+@media (max-width:700px){
+  .row{flex-direction:column}
+  .small{width:100%}
+}

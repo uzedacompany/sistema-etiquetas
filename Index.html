@@ -4,12 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Sistema Gerador de Etiquetas - UZD</title>
-
-  <!-- CSS externo -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="card">
+  <div class="card" id="startCard">
     <h1>Sistema Gerador de Etiquetas - UZD</h1>
     <p class="hint">Escolha o tipo de acesso:</p>
     <div class="row">
@@ -21,12 +19,7 @@
   <div id="mainUI" style="display:none;max-width:1100px;margin:auto">
     <!-- ADMIN PANEL -->
     <div id="adminPanel" class="card" style="display:none">
-      <div class="flex-between">
-        <h2>Painel do Administrador</h2>
-        <div class="actions">
-          <button id="btnLogoutAdmin" class="btn-ghost">Sair</button>
-        </div>
-      </div>
+      <div class="flex-between"><h2>Painel do Administrador</h2><div class="actions"><button id="btnLogoutAdmin" class="btn-ghost">Sair</button></div></div>
 
       <div style="display:flex;gap:12px;margin-top:12px">
         <div style="flex:1">
@@ -46,7 +39,7 @@
         </div>
 
         <div style="width:320px">
-          <label>Logo Global (usada em todas etiquetas)</label>
+          <label>Logo Global (usada em todas etiquetas) — imagem pequena recomendada</label>
           <input id="adm_logo" type="file" accept="image/*" />
           <div id="logoPreview" style="margin-top:8px"></div>
 
@@ -62,18 +55,17 @@
           </div>
 
           <label style="margin-top:8px">Senha do Administrador</label>
-          <input id="adm_password" type="password" />
-          <div style="margin-top:8px" class="hint">Senha atual padrão: <strong>1234</strong></div>
+          <input id="adm_password" type="password" placeholder="Nova senha" />
+          <div style="margin-top:8px" class="hint">Senha padrão inicial: <strong>1234</strong> (criada automaticamente no Firestore se não existir)</div>
           <div style="margin-top:8px"><button id="btnChangePass" class="btn-ghost">Alterar Senha</button></div>
         </div>
       </div>
 
       <div style="margin-top:12px">
-        <div class="flex-between">
-          <h3>Etiquetas Cadastradas</h3>
-          <div class="actions">
-            <button id="btnExport" class="btn-ghost">Exportar (.csv)</button>
-          </div>
+        <div class="flex-between"><h3>Etiquetas Cadastradas</h3>
+        <div class="actions">
+          <button id="btnExport" class="btn-ghost">Exportar (.csv)</button>
+        </div>
         </div>
         <div id="tableWrap"></div>
       </div>
@@ -81,12 +73,7 @@
 
     <!-- USER PANEL -->
     <div id="userPanel" class="card" style="display:none">
-      <div class="flex-between">
-        <h2>Painel do Usuário</h2>
-        <div class="actions">
-          <button id="btnLogoutUser" class="btn-ghost">Sair</button>
-        </div>
-      </div>
+      <div class="flex-between"><h2>Painel do Usuário</h2><div class="actions"><button id="btnLogoutUser" class="btn-ghost">Sair</button></div></div>
 
       <label>Digite o Número de Série</label>
       <div style="display:flex;gap:8px;align-items:center">
@@ -129,32 +116,6 @@
     </div>
   </div>
 
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyB5F-QZrwe49BgH7wu9XpSiHPMgZRqMtfc",
-    authDomain: "sistema-etiquetas.firebaseapp.com",
-    projectId: "sistema-etiquetas",
-    storageBucket: "sistema-etiquetas.firebasestorage.app",
-    messagingSenderId: "655215279342",
-    appId: "1:655215279342:web:9d2cdf0f11d1c3338387ff",
-    measurementId: "G-0DJW6MFHP9"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-  
-  <!-- JS externo -->
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
-

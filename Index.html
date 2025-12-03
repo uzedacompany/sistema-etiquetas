@@ -129,7 +129,32 @@
     </div>
   </div>
 
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyB5F-QZrwe49BgH7wu9XpSiHPMgZRqMtfc",
+    authDomain: "sistema-etiquetas.firebaseapp.com",
+    projectId: "sistema-etiquetas",
+    storageBucket: "sistema-etiquetas.firebasestorage.app",
+    messagingSenderId: "655215279342",
+    appId: "1:655215279342:web:9d2cdf0f11d1c3338387ff",
+    measurementId: "G-0DJW6MFHP9"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+  
   <!-- JS externo -->
   <script src="script.js"></script>
 </body>
 </html>
+
